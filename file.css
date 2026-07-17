@@ -26,12 +26,11 @@
 }
 
 body {
-   font-family: 'Inter', -apple-system, sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #1a1a1a;
-  margin: 0;
- }
+   margin: 0;
+   font-family: 'Inter', sans-serif;
+   color: #111;
+   background: #fff;
+}
 
 .container {
   max-width: 1100px;
@@ -78,11 +77,12 @@ img {
    2. HEADER & NAVIGATION
    ========================================= */
 .site-header {
-  background-color: var(--color-primary);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: var(--shadow);
+  display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 1.5rem 3rem;
+   background: #fff;
+   border-bottom: 1px solid #eee;
 }
 
 .header-container {
@@ -120,7 +120,7 @@ img {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--color-accent);
+  background:#fff;
   transition: width var(--transition);
 }
 
@@ -160,83 +160,47 @@ img {
 /* =========================================
    3. BUTTONS
    ========================================= */
-.btn-dark {
-   background: #111;
-   color: #fff;
-   padding: 0.9rem 1.75rem;
-   border-radius: 999px;
-   font-weight: 600;
-   text-decoration: none;
-}
 
-.btn-outline-black {
-   background: transparent;
-   color: #111;
-   border: 1.5px solid #111;
-   padding: 0.9rem 1.75rem;
-   border-radius: 999px;
-   font-weight: 600;
-   text-decoration: none;
+.btn-dark, .btn-outline-black {
+padding: 0.9rem 1.75rem;
+border-radius: 999px;
+font-weight: 600;
+text-decoration: none;
+display: inline-block;
 }
-
-.btn-dark:hover, .btn-outline-black:hover {
-   opacity: 0.75;
-}
-
+.btn-dark { background: #111; color: #fff; }
+.btn-outline-black { background: transparent; color: #111; border: 1.5px solid #111; }
+.btn-dark:hover, .btn-outline-black:hover { opacity: 0.75; }
 
 /* =========================================
    4. HERO SECTION (Homepage)
    ========================================= */
 .hero {
    position: relative;
-   background: #ffffff;
-   color: #111;
-   padding: 6rem 3rem 4rem;
-   text-align: left;
-   overflow: hidden;
+   overflow: hidden; /* stops the photo from blowing out the layout */
+   min-height: 80vh;
+   padding: 5rem 3rem 3rem;
+   background: #fff;
 }
 
-.hero-eyebrow {
-   font-size: 1.1rem;
-   color: #555;
-   margin-bottom: 0.5rem;
-}
+.hero-eyebrow { font-size: 1.1rem; color: #555; margin: 0 0 0.5rem; }
 
 .hero-title {
-   font-family: 'Inter', sans-serif;
    font-weight: 800;
-   font-size: clamp(3rem, 9vw, 6.5rem);
+   font-size: clamp(3rem, 8vw, 6rem);
    line-height: 0.95;
    letter-spacing: -0.02em;
    margin: 0;
+   max-width: 70%; /* keeps text from running under the photo */
 }
-
 .hero-title .outline {
    -webkit-text-stroke: 2px #111;
    color: transparent;
 }
 
-.hero-photo-overlay {
-   position: absolute;
-   right: 8%;
-   top: 45%;
-   width: 260px;
-   height: 320px;
-   object-fit: cover;
-   border-radius: 12px;
-   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-}
+.hero-location { font-size: 1.1rem; color: #555; margin-top: 1.5rem; }
 
-.hero-location {
-   font-size: 1.15rem;
-   color: #555;
-   margin-top: 1.5rem;
-}
-
-.hero-actions {
-   margin-top: 2rem;
-   display: flex;
-   gap: 1rem;
+.hero-actions { display: flex; gap: 1rem; margin-top: 2rem; }
 }
 
 /* =========================================
@@ -527,12 +491,21 @@ img {
     gap: 14px;
   }
 
-  .hero-content { flex-direction: column; text-align: center; }
-  .hero-actions { justify-content: center; }
-  .task-form { flex-direction: column; }
+   .task-form { flex-direction: column; }
   .task-form input, .task-form button { width: 100%; }
+}
+.hero-photo-overlay {
+   position: absolute;
+   right: 6%;
+   bottom: 0;
+   width: 260px; /* THIS is the fix — forces a fixed size */
+   height: 340px;
+   object-fit: cover;
+   border-radius: 12px 12px 0 0;
+   box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 @media (max-width: 768px) {
-   .hero-photo-overlay { display: none; } /* keeps mobile clean since text/photo overlap won't fit */
+      .hero-photo-overlay { display: none;}/* keeps mobile clean since text/photo overlap won't fit */   
+      .hero-title { max-width: 100%; }
 }
