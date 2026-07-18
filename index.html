@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KOSISOCHUKWU EZEJIUGO | Portfolio</title>
-  <link rel="stylesheet" href="file.css"/>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Kosisochukwu Ezejiugo's portfolio - projects, academic planner, and contact information." />
+    <link rel="icon" href="favicon.ico" />
+    <title>KOSISOCHUKWU EZEJIUGO | Portfolio</title>
+    <link rel="stylesheet" href="file.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="htps://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
 <body>
-
+  <a class="skip-link" href="#main">Skip to content</a>
+  
   <header class="site-header">
     <div class="header-container container">
-      <div class="logo">Kosisochukwu Ezejiugo</div>
+      <div class="logo-block">  
+        <div class="logo">Kosisochukwu Ezejiugo</div>
+        <div class="logo-prompt">k.ezejiugo8171@gmail.com:~</div>
+      </div>
 
       <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
+        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
       </button>
 
       <nav id="mainNav" class="main-nav" role="navigation">
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html" class="active">Home</a></li>
           <li><a href="about.html">About Me</a></li>
           <li><a href="projects.html">Projects</a></li>
           <li><a href="planner.html">Academic Planner</a></li>
@@ -30,18 +37,47 @@
     </div>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
-      <p class="hero-eyebrow">👋 Hi, my name is Kosi and I am an aspiring</p>
-      <h1 class="hero-title">Cyber<br>Security<br><span class="outline">Specialist</span></h1>
-      <img src="IMG-20260716-WA0029.jpg" alt="Kosisochukwu profile photo" class="hero-photo-overlay">
-      <p class="hero-location">Studying at MIVA Open University.</p>
+      <div class="container">
+        <p class="hero-eyebrow">// Welcome</p>
+        <h1 class="hero-title">Cyber<br>Security<br><span class="outline">Specialist</span></h1>
+        <img src="IMG-20260716-WA0029.jpg" alt="Kosisochukwu profile photo" class="hero-photo-overlay">
+        <p class="hero-location">Studying at MIVA Open University.</p>
       <div class="hero-actions">
-        <a href="projects.html" class="btn btn-dark">View my projects</a>
-        <a href="contacts.html" class="btn btn-outline-black">Get in touch</a>
+        <a class="btn btn-primary" href="projects.html">View my projects</a>
+        <a class="btn btn-secondary" href="contacts.html">Get in touch</a>
+      </div>
       </div>
     </section>
 
+    <section>
+      <div class="container">
+          <p class="section=label">// quick links</p>
+          <h2>Where to start</h2>
+        <div class="grid grid-3">
+        <div class="card">
+          <h3>About Me</h3>
+          <p>Background, Skills, and what I'm currently learning</p>
+          <div class="tag-row"><span class="tag">profile</span></div>
+        </div>
+        <div class="card">
+          <h3>Projects</h3>
+          <p>A running log of things I've built and shipped.</p>
+          <div class="tag-row"><span class="tag">portfolio</span></div>
+        </div>
+        <div class="card">
+          <h3>Academic Planner</h3>
+          <p>Courses, assignment and deadlines i'm tracking</p>
+          <div class="tag-row"><span class="tag">school</span></div>
+        </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+        
+    </section>
     <section class="bio-section container">
       <h2>BIO</h2>
       <article class="bio-card">
@@ -53,8 +89,9 @@
 
   </main>
 
-  <footer class="site-footer">
-    <p>&copy; 2026 Kosisochukwu Ezejiugo. MIVA Open University — COS 106 Term Project.</p>
+  <footer class="container">
+    <span>&copy; 2026 Kosisochukwu Ezejiugo</span>
+    <span>Built with HTML &amp; CSS</span>
   </footer>
 
   <script src="file.js" defer></script>
