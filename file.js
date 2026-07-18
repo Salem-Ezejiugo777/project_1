@@ -1,8 +1,4 @@
-/* =========================================
-   1. MOBILE NAVIGATION TOGGLE
-   Runs on every page (elements guarded with
-   an if-check so it fails silently if absent)
-   ========================================= */
+/* MOBILE NAVIGATION TOGGLE */
 const navToggle = document.getElementById('navToggle');
 const mainNav = document.getElementById('mainNav');
 
@@ -11,19 +7,16 @@ if (navToggle && mainNav) {
     mainNav.classList.toggle('open');
     navToggle.classList.toggle('active');
     const isOpen = mainNav.classList.contains('open');
-    navToggle.setAttribute('aria-expanded', isOpen);
+    // set aria-expanded explicitly as string "true" / "false"
+    navToggle.setAttribute('aria-expanded', String(isOpen));
   });
 }
 
-/* =========================================
-   2. ACADEMIC PLANNER (planner.html only)
-   Data is stored in a plain JS array of
-   task objects: { id, text, date, completed }
-   ========================================= */
+/* ACADEMIC PLANNER */
 const taskForm = document.getElementById('taskForm');
 
 if (taskForm) {
-  let tasks = []; // <-- the array that holds all task state
+  let tasks = [];
 
   const taskInput = document.getElementById('taskInput');
   const taskDate = document.getElementById('taskDate');
@@ -32,15 +25,38 @@ if (taskForm) {
   const taskCompleted = document.getElementById('taskCompleted');
   const emptyState = document.getElementById('emptyState');
 
+  // Persist / load
+  function saveTasks() {
+    try {
+      localStorage.setItem('planner_tasks', JSON.stringify(tasks));
+    } catch (e) {
+      console.error('Could not save tasks', e);
+    }
+  }
+  function loadTasks() {
+    const raw = localStorage.getItem('planner_tasks');
+    if (!raw) return [];
+    try {
+      return JSON.parse(raw);
+    } catch (e) {
+      console.error('Failed to parse tasks from storage', e);
+      return [];
+    }
+  }
+
+  // initialize from storage
+  tasks = loadTasks();
+  renderTasks();
+
   // Adding a new task
   taskForm.addEventListener('submit', function (e) {
-    e.preventDefault(); // stop the form from reloading the page
+    e.preventDefault();
 
     const text = taskInput.value.trim();
-    if (text === '') return; // ignore empty submissions
+    if (text === '') return;
 
     tasks.push({
-      id: Date.now(),      // simple unique ID based on timestamp
+      id: Date.now(),
       text: text,
       date: taskDate.value,
       completed: false
@@ -48,11 +64,11 @@ if (taskForm) {
 
     taskInput.value = '';
     taskDate.value = '';
+    saveTasks();
     renderTasks();
   });
 
-  // Event delegation: ONE listener on the <ul> handles clicks on
-  // every "Done" and "Delete" button, even ones added later.
+  // Event delegation for Done / Delete
   taskList.addEventListener('click', function (e) {
     const li = e.target.closest('li');
     if (!li) return;
@@ -62,16 +78,17 @@ if (taskForm) {
       tasks = tasks.map(t =>
         t.id === id ? { ...t, completed: !t.completed } : t
       );
+      saveTasks();
       renderTasks();
     }
 
     if (e.target.classList.contains('delete-btn')) {
       tasks = tasks.filter(t => t.id !== id);
+      saveTasks();
       renderTasks();
     }
   });
 
-  // Rebuilds the entire task list in the DOM from the tasks array
   function renderTasks() {
     taskList.innerHTML = '';
 
@@ -85,11 +102,11 @@ if (taskForm) {
       li.innerHTML = `
         <span class="task-text">
           ${escapeHTML(task.text)}
-          ${task.date ? `<small class="task-date">(Due: ${task.date})</small>` : ''}
+          ${task.date ? `<small class="task-date">(Due: ${escapeHTML(task.date)})</small>` : ''}
         </span>
         <div class="task-actions">
-          <button class="complete-btn">${task.completed ? '↺ Undo' : '✓ Done'}</button>
-          <button class="delete-btn">🗑 Delete</button>
+          <button type="button" class="complete-btn">${task.completed ? '↺ Undo' : '✓ Done'}</button>
+          <button type="button" class="delete-btn">🗑 Delete</button>
         </div>
       `;
 
@@ -100,7 +117,6 @@ if (taskForm) {
     taskCompleted.textContent = `${tasks.filter(t => t.completed).length} completed`;
   }
 
-  // Prevents raw HTML in a task from breaking the page (basic XSS safety)
   function escapeHTML(str) {
     const div = document.createElement('div');
     div.textContent = str;
@@ -108,9 +124,7 @@ if (taskForm) {
   }
 }
 
-/* =========================================
-   3. CONTACT FORM VALIDATION (contact.html only)
-   ========================================= */
+/* CONTACT FORM VALIDATION (unchanged) */
 const contactForm = document.getElementById('contactForm');
 
 if (contactForm) {
