@@ -95,7 +95,7 @@ img {
 }
 
 .logo {
-  color: #fff;
+  color: var(--color-primary);
   font-size: 1.4rem;
   font-weight: 700;
 }
@@ -105,6 +105,9 @@ img {
   display: flex;
   gap: 28px;
 }
+
+/* ensure underline pseudo-element positions correctly */
+.main-nav li { position: relative; }
 
 .main-nav a {
   font-size: 0.95rem;
@@ -120,7 +123,7 @@ img {
   left: 0;
   width: 0;
   height: 2px;
-  background:#fff;
+  background: var(--color-accent);
   transition: width var(--transition);
 }
 
@@ -148,7 +151,7 @@ img {
 .nav-toggle span {
   width: 26px;
   height: 3px;
-  background: #fff;
+  background: var(--color-primary);
   border-radius: 2px;
   transition: transform var(--transition), opacity var(--transition);
 }
@@ -201,7 +204,6 @@ display: inline-block;
 .hero-location { font-size: 1.1rem; color: #555; margin-top: 1.5rem; }
 
 .hero-actions { display: flex; gap: 1rem; margin-top: 2rem; }
-}
 
 /* =========================================
    5. BIO & VIDEO SECTIONS
