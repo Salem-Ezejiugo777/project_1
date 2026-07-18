@@ -5,14 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KOSISOCHUKWU EZEJIUGO | Portfolio</title>
   <link rel="stylesheet" href="file.css"/>
-  <link rel="preconnect" href="https://fonts.googlleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stlyesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <header class="site-header">
-    <div class="logo">Kosisochukwu Ezejiugo</div>
-      <nav>
+    <div class="header-container container">
+      <div class="logo">Kosisochukwu Ezejiugo</div>
+
+      <button id="navToggle" class="nav-toggle" aria-expanded="false" aria-controls="mainNav" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav id="mainNav" class="main-nav" role="navigation">
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="about.html">About Me</a></li>
@@ -21,13 +27,14 @@
           <li><a href="contacts.html">Contact</a></li>
         </ul>
       </nav>
+    </div>
   </header>
 
   <main>
     <section class="hero">
       <p class="hero-eyebrow">👋 Hi, my name is Kosi and I am an aspiring</p>
-        <h1 class="hero-title">Cyber<br>Security<br><span class="outline">Specialist</span></h1>
-        <img src="IMG-20260716-WA0029.jpg" alt="Kosisochukwu profile photo" class="hero-photo-overlay">
+      <h1 class="hero-title">Cyber<br>Security<br><span class="outline">Specialist</span></h1>
+      <img src="IMG-20260716-WA0029.jpg" alt="Kosisochukwu profile photo" class="hero-photo-overlay">
       <p class="hero-location">Studying at MIVA Open University.</p>
       <div class="hero-actions">
         <a href="projects.html" class="btn btn-dark">View my projects</a>
@@ -40,7 +47,6 @@
       <article class="bio-card">
         <p>
           I'm highly motivated, focused and result-oriented. An enthusiastic team player, eager to start a promising career in Cyber Security.
-           
         </p>
       </article>
     </section>
@@ -48,9 +54,9 @@
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 [Student Name]. MIVA Open University — COS 106 Term Project.</p>
+    <p>&copy; 2026 Kosisochukwu Ezejiugo. MIVA Open University — COS 106 Term Project.</p>
   </footer>
 
-  <script src="file.js"></script>
+  <script src="file.js" defer></script>
 </body>
 </html>
